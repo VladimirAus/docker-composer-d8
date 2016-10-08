@@ -31,10 +31,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root123#
       MYSQL_PORT_3306_TCP_ADDR: db
-      PMA_ARBITRARY: 1
-      PMA_HOST: db
-      PMA_USER: root
-      PMA_PASSWORD: root123#
 #    volumes:
 #      - ./config/mariadb/config.user.inc.php:/config.user.inc.php
   drush:
