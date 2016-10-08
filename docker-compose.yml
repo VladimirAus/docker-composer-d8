@@ -1,0 +1,43 @@
+version: '2'
+services:
+  db:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: root123#
+      MYSQL_DATABASE: do_docker_d8_tes
+      MYSQL_USER: sql_docker_d8_tes
+      MYSQL_PASSWORD: Abra16#Cadabra
+  php7:
+    depends_on:
+      - db
+    build: docker/php7
+    links:
+      - db
+    ports:
+      - "80:80"
+      - "443:443"
+#    restart: always
+    volumes:
+      - ./app/docroot:/var/www/html
+      - ./config/php7/ssl:/etc/apache2/ssl/STAR_drupal_org_au
+  phpmyadmin:
+    depends_on:
+      - db
+    image: corbinu/docker-phpmyadmin
+    links:
+      - db
+    ports:
+      - "8181:80"
+    environment:
+      MYSQL_ROOT_PASSWORD: root123#
+      MYSQL_PORT_3306_TCP_ADDR: db
+      PMA_ARBITRARY: 1
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root123#
+#    volumes:
+#      - ./config/mariadb/config.user.inc.php:/config.user.inc.php
+  drush:
+    image: drush/drush
+    volumes_from:
+      - php7
