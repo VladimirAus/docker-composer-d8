@@ -10,6 +10,7 @@ alias dcdrush="$DRUSH $ROOT"
 
 alias drushsi="$DRUSH site-install conference --db-url=mysql://sql_docker_d8_tes:Abra16#Cadabra@127.0.0.1:3306/do_docker_d8_tes $ROOT -y"
 alias drushcr="$DRUSH cr all $ROOT"
+alias dcdrushsqldump="$DRUSH $ROOT sql-dump --result-file=/var/www/html/_db/$(date +%Y%m%d%H%M%S).sql"
 alias drushuli="$DRUSH uli --uri='http://planning-portal.vm.dev' $ROOT"
 alias drushbuild="drushsi && drushuli && drushcr"
 
