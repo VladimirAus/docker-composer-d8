@@ -7,6 +7,8 @@ services:
       MYSQL_DATABASE: do_docker_d8_tes
       MYSQL_USER: sql_docker_d8_tes
       MYSQL_PASSWORD: Abra16#Cadabra
+    volumes:
+      - ./config/mysql:/etc/mysql/conf.d
   php7:
     depends_on:
       - db
