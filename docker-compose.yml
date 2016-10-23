@@ -16,12 +16,12 @@ services:
     links:
       - db
     ports:
-      - "80:80"
-      - "443:443"
+      - "8080:80"
+#      - "443:443"
 #    restart: always
     volumes:
       - ./app/docroot:/var/www/html
-      - ./config/php7/ssl:/etc/apache2/ssl/STAR_drupal_org_au
+#      - ./config/php7/ssl:/etc/apache2/ssl/STAR_drupal_org_au
   phpmyadmin:
     depends_on:
       - db
